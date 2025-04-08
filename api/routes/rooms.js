@@ -7,8 +7,7 @@ import {
   updateRoom,
   updateRoomAvailability,
 } from "../controllers/room.js";
-import { verifyAdmin } from "../utils/verifyToken.js";
-
+import { verifyAdmin } from "../Utils/verifyToken.js";
 const router = express.Router();
 //CREATE
 router.post("/:hotelid", verifyAdmin, createRoom);
@@ -25,4 +24,4 @@ router.get("/:id", getRoom);
 
 router.get("/", getRooms);
 
-export default router
+export default router;

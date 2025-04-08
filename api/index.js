@@ -13,7 +13,12 @@ dotenv.config();
 
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO);
+    await mongoose.connect(process.env.MONGO, {
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
+      // serverSelectionTimeoutMS: 5000,
+      // ssl: true,
+    });
     console.log("Connected to mongoDB.");
   } catch (error) {
     throw error;
@@ -25,10 +30,16 @@ mongoose.connection.on("disconnected", () => {
 });
 
 //middlewares
-app.use(cors())
-app.use(cookieParser())
+app.use(cors());
+app.use(cookieParser());
 app.use(express.json());
-app.use(cors({origin:'*',allowedHeaders:['Content-Type','Authorization'],methods:'GET,POST,PUT,DELETE'}))
+app.use(
+  cors({
+    origin: "*",
+    allowedHeaders: ["Content-Type", "Authorization"],
+    methods: "GET,POST,PUT,DELETE",
+  })
+);
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
