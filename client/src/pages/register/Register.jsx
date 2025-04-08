@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./register.scss";
 import axios from "axios";
-
+import "./Register.scss";
 const Register = () => {
   const [inputs, setInputs] = useState({
     username: "",
@@ -26,7 +25,7 @@ const Register = () => {
     }
   };
 
-  console.log(err)
+  console.log(err);
 
   return (
     <div className="register">
@@ -68,6 +67,24 @@ const Register = () => {
               type="text"
               placeholder="Name"
               name="name"
+              onChange={handleChange}
+            />
+            <input
+              type="number"
+              placeholder="Phone Number"
+              name="phone"
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              placeholder="City"
+              name="city"
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Country"
+              name="country"
               onChange={handleChange}
             />
             {err && err}
