@@ -22,6 +22,7 @@ const Login = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
+
     try {
       const res = await axios.post("/auth/login", credentials);
       if (res.data.isAdmin) {
